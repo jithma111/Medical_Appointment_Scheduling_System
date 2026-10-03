@@ -4,5 +4,7 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
         System.out.println("Hello, World!");
+        System.out.println("Enter your name : ");
+        int num = input.nextInt();
     }
 }
