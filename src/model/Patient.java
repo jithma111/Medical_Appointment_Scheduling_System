@@ -25,4 +25,5 @@ public class Patient extends User {
         String[] f = line.split("\\|", -1);
         return new Patient(f[0], f[1], f[2], f[3], Integer.parseInt(f[4]), f[5]);
     }
+    
 }
