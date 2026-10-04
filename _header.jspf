@@ -1,0 +1,35 @@
+<%@ page import="model.*, controller.Html" %>
+<%
+    String ctx = request.getContextPath();
+    User navUser = (User) session.getAttribute("user");
+    String flash = (String) session.getAttribute("flash");
+    session.removeAttribute("flash");
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= Html.esc(request.getAttribute("pageTitle")) %> - MediSchedule</title>
+  <link href="<%= ctx %>/assets/bootstrap.min.css" rel="stylesheet">
+  <link href="<%= ctx %>/assets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark navbar-brand-bar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="<%= ctx %>/">&#9877; MediSchedule</a>
+    <% if (navUser != null) { %>
+    <div class="d-flex align-items-center gap-3 text-white">
+      <span><%= Html.esc(navUser.getName()) %> <span class="badge bg-light text-dark"><%= navUser.getRole() %></span></span>
+      <a class="btn btn-sm btn-outline-light" href="<%= ctx %>/logout">Logout</a>
+    </div>
+    <% } %>
+  </div>
+</nav>
+<div class="container py-4">
+<% if (flash != null && flash.contains("|")) { String[] f = flash.split("\\|", 2); %>
+  <div class="alert alert-<%= Html.esc(f[0]) %> alert-dismissible fade show" role="alert">
+    <%= Html.esc(f[1]) %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } %>

@@ -1,0 +1,4 @@
+</div>
+<script src="<%= ctx %>/assets/bootstrap.bundle.min.js"></script>
+</body>
+</html>
