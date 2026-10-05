@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CareSlot Medical Centre – Book a Doctor Online</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f7f8;--sf:#fff;--ink:#12292b;--mu:#5d7476;--ln:#d6e2e4;--br:#0f6b66;--bi:#fff;--so:#dff0ee;--wn:#fff1d0;--wi:#7a5200;--ok:#d9f2df;--oi:#17602b;--bd:#fde1e1;--bdi:#8c1d1d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a1c;--sf:#14282b;--ink:#e6f2f2;--mu:#8fabad;--ln:#25413f;--br:#4cc3b8;--bi:#08201e;--so:#1b3a38;--wn:#3d3112;--wi:#f2d27a;--ok:#16361f;--oi:#8fdba3;--bd:#432020;--bdi:#f0a1a1}}
+:root[data-theme="dark"]{--bg:#0d1a1c;--sf:#14282b;--ink:#e6f2f2;--mu:#8fabad;--ln:#25413f;--br:#4cc3b8;--bi:#08201e;--so:#1b3a38;--wn:#3d3112;--wi:#f2d27a;--ok:#16361f;--oi:#8fdba3;--bd:#432020;--bdi:#f0a1a1}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--br)}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+.bar{background:var(--sf);border-bottom:1px solid var(--ln);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar .w{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding-top:12px;padding-bottom:12px}
+.logo{font-weight:700;font-size:1.25rem;color:var(--br);text-decoration:none;margin-right:auto}
+.bar nav{display:flex;gap:16px;flex-wrap:wrap}.bar nav a{color:var(--ink);text-decoration:none;font-weight:500}.bar nav a:hover{color:var(--br)}
+.btn{display:inline-block;background:var(--br);color:var(--bi);border:0;padding:10px 18px;border-radius:8px;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.btn.sm{padding:5px 11px;font-size:.85rem}.btn.alt{background:var(--so);color:var(--ink)}.btn.del{background:var(--bd);color:var(--bdi)}.btn:disabled{opacity:.5;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--br);outline-offset:2px}
+.hero{padding:48px 0 40px}.hero .w{display:grid;gap:32px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:center}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1;letter-spacing:-.02em;margin:0 0 14px}
+h2{font-size:1.5rem;margin:0 0 6px}h3{margin:0 0 4px;font-size:1.05rem}
+.lead{color:var(--mu);font-size:1.1rem;max-width:46ch}.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:18px}
+.sec{padding:36px 0}.sec.alt{background:var(--sf);border-block:1px solid var(--ln)}
+.g{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:18px}.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.mu{color:var(--mu)}.step b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--br);color:var(--bi);margin-bottom:8px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding:11px 0;border-top:1px solid var(--ln)}.row:first-child{border-top:0}
+.row small{color:var(--mu);display:block}
+label{display:block;font-size:.85rem;color:var(--mu);margin:10px 0 4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+.auth{max-width:420px;margin:40px auto}.auth .btn{width:100%;margin-top:16px}
+.slots{display:flex;flex-wrap:wrap;gap:6px}.slot{padding:7px 11px;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.slot[aria-pressed="true"]{background:var(--br);color:var(--bi);border-color:var(--br)}.slot:disabled{text-decoration:line-through;opacity:.45;cursor:not-allowed}
+.tag{font-size:.78rem;padding:2px 9px;border-radius:99px;font-weight:700}.pending{background:var(--wn);color:var(--wi)}.confirmed,.completed{background:var(--ok);color:var(--oi)}.cancelled{background:var(--bd);color:var(--bdi)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}
+.stats{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));margin:20px 0}.stat b{font-size:1.8rem;display:block;color:var(--br)}
+.fb{fill:var(--br)}.fs{fill:var(--so)}.fw{fill:var(--sf)}.fi{fill:var(--ink)}.sb{stroke:var(--br);fill:none;stroke-width:5;stroke-linecap:round}.sl{stroke:var(--ln);stroke-width:3;stroke-linecap:round}.hero-img{width:100%;height:auto;display:block;border-radius:12px}.ic{width:44px;height:44px;margin-bottom:8px}.av{width:72px;height:72px;margin-bottom:8px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0}.tabs button{border:1px solid var(--ln);background:var(--sf);color:var(--ink);padding:8px 14px;border-radius:8px;font:inherit;font-weight:500;cursor:pointer}.tabs button[aria-pressed="true"]{background:var(--br);color:var(--bi);border-color:var(--br)}code{background:var(--sf);padding:1px 6px;border-radius:4px}.dash{padding:28px 0 48px}.hint{background:var(--so);border-radius:8px;padding:10px 12px;font-size:.88rem;margin-top:16px}
+footer{background:var(--ink);color:var(--bg);padding:32px 0;margin-top:20px}footer a{color:inherit}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:9}#toast.on{opacity:1}
+
+@keyframes rise{from{opacity:0;translate:0 26px}to{opacity:1;translate:0 0}}
+@keyframes pagein{from{opacity:0}to{opacity:1}}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -12px}}
+@keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(70px,50px) scale(1.2)}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.3)}30%{transform:scale(1)}45%{transform:scale(1.18)}}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(30,170,90,.6)}100%{box-shadow:0 0 0 10px rgba(30,170,90,0)}}
+@keyframes pop{0%{transform:scale(.88)}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--br);z-index:20}
+.bar{transition:box-shadow .3s}.bar.sc{box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.bar nav a:not(.btn){background:linear-gradient(var(--br),var(--br)) 0 100%/0 2px no-repeat;transition:background-size .25s,color .2s;padding-bottom:2px}.bar nav a:not(.btn):hover{background-size:100% 2px}
+.btn{transition:transform .15s,box-shadow .15s,opacity .2s}.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,107,102,.28)}.btn:active{transform:scale(.97)}
+.card{transition:transform .25s,box-shadow .25s,border-color .25s}.g .card:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(0,0,0,.1);border-color:var(--br)}
+.ic,.av{transition:transform .35s}.card:hover .ic,.card:hover .av{transform:rotate(-8deg) scale(1.12)}
+.slot{transition:transform .15s,background .2s}.slot:hover:not(:disabled){transform:translateY(-2px);border-color:var(--br)}.slot[aria-pressed="true"]{animation:pop .3s}
+.row{transition:background .2s}.row:hover{background:var(--so)}
+.hero{position:relative;overflow:hidden}.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);z-index:0;animation:drift 14s ease-in-out infinite alternate}
+.hero::before{width:380px;height:380px;background:var(--so);top:-130px;left:-90px}.hero::after{width:300px;height:300px;background:var(--br);opacity:.2;bottom:-120px;right:-60px;animation-delay:-6s}
+.hero .w{position:relative;z-index:1}
+.hero h1,.hero .lead,.hero .rot,.hero .cta{animation:rise .7s both}.hero .lead{animation-delay:.12s}.hero .rot{animation-delay:.22s}.hero .cta{animation-delay:.32s}.hero .w>div:last-child{animation:rise .9s .25s both}
+.hero-img{animation:float 6s ease-in-out infinite}.hero-img path:last-child{transform-box:fill-box;transform-origin:center;animation:beat 2.2s infinite}
+.rot{margin:10px 0 0;color:var(--mu)}#rot{display:inline-block;color:var(--br);transition:opacity .3s,translate .3s}#rot.out{opacity:0;translate:0 -8px}
+.live{display:inline-block;width:10px;height:10px;border-radius:50%;background:#1eaa5a;margin-right:8px;animation:ping 1.6s infinite}
+.strip{background:var(--br);color:var(--bi);padding:26px 0}.strip .g{margin:0;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));text-align:center}.num b{display:block;font-size:2.3rem;line-height:1.1}.num span{opacity:.85}
+.rv{opacity:0}.rv.in{animation:rise .65s var(--d,0s) both}
+body.pub #app>*{animation:pagein .45s ease both}
+#toast{transform:translate(-50%,16px);transition:opacity .25s,transform .25s}#toast.on{transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1}}
+</style></head><body>
+<div id="prog"></div>
+<div class="bar"><div class="w"><a class="logo" href="#/">✚ CareSlot Medical Centre</a><nav id="nav"></nav></div></div>
+<main id="app"></main>
+<footer><div class="w" id="foot"></div></footer>
+<div id="toast" role="status"></div>
+<script>
+const td=()=>{const n=new Date();return n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0')},$=s=>document.querySelector(s);
+let S={me:null,doctors:[],appts:[],patients:[],records:[],stats:{doctors:0,patients:0,appts:0}},SL=[];
+const api=async(p,b)=>{const o=b?{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(b)}:{};let r;try{r=await fetch(p,o)}catch(e){throw new Error('Cannot reach the server')}const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Something went wrong');return j};
+const refresh=async()=>{S=await api('/api/state')};
+const loadSlots=async()=>{try{SL=draft.doc&&draft.date?(await api('/api/slots?doctor='+encodeURIComponent(draft.doc)+'&date='+draft.date)).slots:[]}catch(e){SL=[]}};
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const me=()=>S.me,doc=id=>S.doctors.find(d=>d.id==id);
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2400)};
+const go=h=>{location.hash=h};
+const HERO=`<svg class="hero-img" viewBox="0 0 420 240" role="img" aria-label="Illustration of a doctor beside an appointment calendar"><rect width="420" height="240" rx="12" class="fs"/><circle cx="60" cy="50" r="30" class="fw" opacity=".6"/><circle cx="370" cy="200" r="40" class="fw" opacity=".6"/>
+<path d="M60 240v-40a60 60 0 0 1 60-60h40a60 60 0 0 1 60 60v40z" class="fw"/><path d="M118 142l22 40 22-40" fill="none" stroke="var(--ln)" stroke-width="3"/><circle cx="140" cy="90" r="34" fill="#e8b894"/><path d="M104 86a36 36 0 0 1 72 0c-10-14-26-18-36-18s-26 4-36 18z" class="fi"/><path d="M112 150c-6 20 4 34 20 34" class="sb"/><circle cx="134" cy="186" r="7" class="fb"/>
+<rect x="236" y="48" width="150" height="132" rx="12" class="fw"/><path d="M236 60a12 12 0 0 1 12-12h126a12 12 0 0 1 12 12v22H236z" class="fb"/>
+<g class="sl"><path d="M258 104h28M302 104h28M346 104h18M258 128h28M302 128h28M258 152h28"/></g><circle cx="356" cy="152" r="14" class="fb"/><path d="M349 152l5 5 9-10" fill="none" stroke="var(--bi)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M214 30v22M203 41h22" class="sb" style="stroke-width:6"/></svg>`;
+const IC=[`<svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" class="fs"/><path d="M15 12v10a6 6 0 0 0 12 0V12M21 28v3a6 6 0 0 0 12 0v-2" class="sb" style="stroke-width:3"/><circle cx="33" cy="26" r="3.5" class="fb"/></svg>`,
+`<svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" class="fs"/><path d="M24 35s-11-7-11-15a6 6 0 0 1 11-3 6 6 0 0 1 11 3c0 8-11 15-11 15z" class="fb"/></svg>`,
+`<svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" class="fs"/><circle cx="24" cy="24" r="12" class="fb"/><circle cx="20" cy="22" r="1.8" class="fw"/><circle cx="28" cy="22" r="1.8" class="fw"/><path d="M19 28q5 4 10 0" fill="none" stroke="var(--bi)" stroke-width="2" stroke-linecap="round"/></svg>`,
+`<svg class="ic" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="24" class="fs"/><rect x="14" y="12" width="20" height="25" rx="3" class="fb"/><rect x="19" y="9" width="10" height="6" rx="2" class="fi"/><path d="M19 23h10M19 29h7" stroke="var(--bi)" stroke-width="2.5" stroke-linecap="round"/></svg>`];
+const av=i=>{const k=+i%4,sk=['#e8b894','#c68e65','#f1cfae','#8d5a3b'][k],hr=['#2b1d14','#5a3a22','#1b1b1b','#7a7a7a'][(k+1)%4];return `<svg class="av" viewBox="0 0 72 72" role="img" aria-label="Doctor portrait placeholder"><circle cx="36" cy="36" r="36" class="fs"/><path d="M10 62a26 22 0 0 1 52 0a36 36 0 0 1-52 0z" class="fw"/><path d="M28 48l8 14 8-14" fill="none" stroke="var(--ln)" stroke-width="2"/><circle cx="36" cy="30" r="12" fill="${sk}"/><path d="M23 29a13 13 0 0 1 26 0c-4-6-9-7-13-7s-9 1-13 7z" fill="${hr}"/></svg>`};
+let draft={doc:null,date:td(),time:null};
+const tag=s=>`<span class="tag ${s}">${s[0].toUpperCase()+s.slice(1)}</span>`;
+const sorted=l=>[...l].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));
+
+function home(){
+ const nx=S.doctors.slice(0,4).map(d=>{const n=d.next&&{dt:d.next.date,t:d.next.time};return n?`<div class="row"><div><b>${esc(d.name)}</b><small>${esc(d.spec)} · ${n.dt} at ${n.t}</small></div><button class="btn sm" data-book="${d.id}">Book</button></div>`:''}).join('');
+ return `<section class="hero"><div class="w"><div><h1>Book your doctor online, in under a minute.</h1><p class="lead">Choose a specialist, pick a free time and get confirmation from the doctor. No phone calls, no waiting in line.</p><p class="rot">Now booking: <b id="rot">${esc(S.doctors[0]?.spec||'General Practice')}</b></p><div class="cta"><a class="btn" href="#/dashboard">Book appointment</a><a class="btn alt" href="#/doctors">Meet our doctors</a></div></div>
+ <div>${HERO}<div class="card" style="margin-top:16px"><h3><i class="live"></i>Next available appointments</h3>${nx||'<p class="mu">No doctors are listed yet.</p>'}</div></div></div></section>
+ <section class="strip"><div class="w g">${[['Doctors',S.doctors.length],['Registered patients',S.stats.patients],['Appointments booked',S.stats.appts],['Opening hours per week',44]].map(n=>`<div class="num"><b data-count="${n[1]}">0</b><span>${n[0]}</span></div>`).join('')}</div></section>
+ <section class="sec alt"><div class="w"><h2>Our services</h2><p class="mu">Everyday and specialist care under one roof.</p><div class="g">
+ ${[['General check-ups','Routine exams, health screening and advice.'],['Cardiology','Heart tests, blood pressure and ECG.'],['Pediatrics','Child health, growth and vaccinations.'],['Follow-up visits','Review results and adjust your treatment.']].map((s,i)=>`<div class="card">${IC[i]}<h3>${s[0]}</h3><p class="mu" style="margin:0">${s[1]}</p></div>`).join('')}</div></div></section>
+ <section class="sec"><div class="w"><h2>How booking works</h2><div class="g">
+ ${[['Create an account','Register as a patient with your name, phone number and a username.'],['Choose doctor and time','Free times are shown live; taken times are crossed out.'],['Get confirmed','The doctor confirms, and you can cancel any time.']].map((s,i)=>`<div class="step"><b>${i+1}</b><h3>${s[0]}</h3><p class="mu" style="margin:0">${s[1]}</p></div>`).join('')}</div></div></section>
+ <section class="sec alt" id="contact"><div class="w"><h2>Contact and opening hours</h2><div class="g g2"><div class="card"><h3>Visit us</h3><p class="mu" style="margin:0">123 Health Avenue, Your City<br>Phone: +00 000 000 000<br>Email: hello@careslot.example</p></div><div class="card"><h3>Opening hours</h3><p class="mu" style="margin:0">Monday–Friday: 9:00–17:00<br>Saturday: 9:00–13:00<br>Emergency? Call your local emergency number.</p></div></div></div></section>`}
+
+function doctors(){return `<section class="sec"><div class="w"><h2>Our doctors</h2><div class="g">${S.doctors.map(d=>`<div class="card">${av(d.id)}<h3>${esc(d.name)}</h3><b class="mu">${esc(d.spec)}</b><p class="mu">Consultation fee: ${esc(d.fee)}</p><button class="btn sm" data-book="${d.id}">Book appointment</button></div>`).join('')||'<p class="mu">No doctors listed yet.</p>'}</div></div></section>`}
+
+let tab='overview',flt='pending',cred=null;
+const gen=()=>{const c='abcdefghjkmnpqrstuvwxyz23456789';return [...crypto.getRandomValues(new Uint8Array(8))].map(n=>c[n%c.length]).join('')};
+const st=a=>`<div class="stats">${a.map(s=>`<div class="card stat"><b>${s[1]}</b><span class="mu">${s[0]}</span></div>`).join('')}</div>`;
+const tabs=(cur,a,k)=>`<div class="tabs" role="tablist">${a.map(t=>`<button ${k}="${t[0]}" aria-pressed="${cur==t[0]}">${t[1]}</button>`).join('')}</div>`;
+
+function login(){return `<form class="card auth" id="lf"><h2>Log in</h2><p class="mu" style="margin:0">Patients use their username. Doctors use the Doctor ID given by the clinic admin.</p><label for="e">Username or Doctor ID</label><input id="e" required autocomplete="username"><label for="p">Password</label><input id="p" type="password" required autocomplete="current-password"><button class="btn">Log in</button>
+ <p class="mu" style="margin:12px 0 0">New patient? <a href="#/register">Create an account</a>. Doctor accounts are created by the admin only.</p>
+ </form>`}
+function register(){return `<form class="card auth" id="rf"><h2>Patient registration</h2><label for="n">Full name</label><input id="n" required><label for="ag">Age</label><input id="ag" type="number" min="0" max="120" required><label for="ph">Phone (10 digits, starting with 0)</label><input id="ph" pattern="0[0-9]{9}" inputmode="numeric" required autocomplete="tel"><label for="e">Choose a username (4–20 letters, numbers or _)</label><input id="e" pattern="[A-Za-z0-9_]{4,20}" required autocomplete="username"><label for="p">Password (6+ characters)</label><input id="p" type="password" minlength="6" required autocomplete="new-password"><button class="btn">Create account</button><p class="mu" style="margin:12px 0 0">Already registered? <a href="#/login">Log in</a></p></form>`}
+
+function apptRow(a,acts,u){const d=doc(a.doc);const who=u.role=='patient'?(d?d.name:'Removed doctor'):a.patient+(u.role=='admin'?' with '+(d?d.name:'removed doctor'):'');
+ return `<div class="row"><div><b>${a.date} at ${a.time}</b> ${tag(a.status)}<small>${esc(who)}${a.reason?' – '+esc(a.reason):''}</small></div><div class="acts">${acts}</div></div>`}
+const canc=a=>['cancelled','completed'].includes(a.status)?'':`<button class="btn sm del" data-x="${a.id}">Cancel</button>`;
+
+function pat(u){const mine=sorted(S.appts.filter(a=>a.pid==u.id)),c=s=>mine.filter(a=>a.status==s).length;
+ return st([['Pending',c('pending')],['Confirmed',c('confirmed')],['Completed',c('completed')]])+`<div class="g g2"><section class="card"><h3>Book an appointment</h3><label for="dd">Doctor</label><select id="dd">${S.doctors.map(d=>`<option value="${d.id}" ${d.id==draft.doc?'selected':''}>${esc(d.name)} – ${esc(d.spec)}</option>`).join('')}</select>
+ <label for="dt">Date</label><input type="date" id="dt" min="${td()}" value="${draft.date}"><label>Time (crossed-out times are taken)</label><div class="slots">${SL.map(s=>`<button class="slot" data-t="${s.t}" aria-pressed="${draft.time==s.t}" ${s.free?'':'disabled'}>${s.t}</button>`).join('')||'<span class="mu">No times available</span>'}</div>
+ <label for="rs">Reason for visit</label><textarea id="rs" rows="2"></textarea><button class="btn" id="book" style="margin-top:14px" ${S.doctors.length?'':'disabled'}>Book appointment</button></section>
+ <section class="card"><h3>My appointments</h3>${mine.map(a=>apptRow(a,canc(a),u)).join('')||'<p class="mu">No appointments yet. Choose a doctor and time to book one.</p>'}</section></div>`+(S.records.length?`<section class="card" style="margin-top:16px"><h3>My medical records</h3>${S.records.map(r=>`<div class="row"><div><b>${esc(r.date)} · ${esc(r.diagnosis)}</b><small>${esc(r.doctor)}${r.notes?' – '+esc(r.notes):''}</small></div></div>`).join('')}</section>`:'')}
+
+function dr(u){const d=doc(u.doc)||{spec:''},l=sorted(S.appts.filter(a=>a.doc==u.doc)),c=s=>l.filter(a=>a.status==s).length;
+ const f={pending:l.filter(a=>a.status=='pending'),upcoming:l.filter(a=>a.status=='confirmed'),history:l.filter(a=>['completed','cancelled'].includes(a.status))}[flt];
+ const act=a=>a.status=='pending'?`<button class="btn sm" data-s="confirmed" data-id="${a.id}">Confirm</button><button class="btn sm del" data-s="cancelled" data-id="${a.id}">Decline</button>`:a.status=='confirmed'?`<button class="btn sm" data-s="completed" data-id="${a.id}">Mark done</button><button class="btn sm del" data-s="cancelled" data-id="${a.id}">Cancel</button>`:'';
+ return `<div class="card" style="margin-top:12px"><b>${esc(d.spec)}</b> <span class="mu">· Doctor ID ${esc(u.username)}</span></div>`+st([['Waiting for you',c('pending')],['Confirmed',c('confirmed')],['Seen',c('completed')]])+tabs(flt,[['pending','Requests'],['upcoming','Upcoming'],['history','History']],'data-f')+`<section class="card">${f.map(a=>apptRow(a,act(a),u)).join('')||'<p class="mu">Nothing here right now.</p>'}</section>`}
+
+function adm(u){const c=s=>S.appts.filter(a=>a.status==s).length,pts=S.patients;
+ let b='';
+ if(tab=='overview')b=st([['Doctors',S.doctors.length],['Patients',pts.length],['Pending',c('pending')],['Confirmed',c('confirmed')],['Completed',c('completed')]])+`<section class="card"><h3>Latest bookings</h3>${sorted(S.appts).slice(-5).reverse().map(a=>apptRow(a,'',u)).join('')||'<p class="mu">No appointments have been booked.</p>'}</section>`;
+ if(tab=='doctors')b=(cred?`<div class="hint" style="margin:0 0 16px"><b>Login details for ${esc(cred.name)}</b><br>Doctor ID: <code>${esc(cred.id)}</code><br>Password: <code>${esc(cred.pass)}</code><br>Give these to the doctor now. The password is not shown again.</div>`:'')+`<div class="g g2"><section class="card"><h3>Doctors</h3>${S.doctors.map(d=>{const x=d;return `<div class="row"><div><b>${esc(d.name)}</b><small>${esc(d.spec)} · ID ${esc(x?x.username:'none')}</small></div><div class="acts"><button class="btn sm alt" data-rs="${d.id}">Reset password</button><button class="btn sm del" data-rd="${d.id}">Remove</button></div></div>`}).join('')||'<p class="mu">No doctors yet.</p>'}</section>
+ <form class="card" id="af"><h3>Add a doctor</h3><p class="mu" style="margin:0">A Doctor ID and password are created for you.</p><label for="an">Full name</label><input id="an" required><label for="as">Specialty</label><input id="as" required><label for="fe">Consultation fee</label><input id="fe" type="number" min="0" step="any" value="0" required><button class="btn" style="margin-top:14px">Create doctor account</button></form></div>`;
+ if(tab=='patients')b=`<section class="card"><h3>Patients</h3>${pts.map(p=>`<div class="row"><div><b>${esc(p.name)}</b><small>Username ${esc(p.username)}</small></div><button class="btn sm del" data-rp="${p.id}">Remove</button></div>`).join('')||'<p class="mu">No patients registered yet.</p>'}</section>`;
+ if(tab=='appts')b=`<section class="card"><h3>All appointments</h3>${sorted(S.appts).map(a=>apptRow(a,canc(a),u)).join('')||'<p class="mu">No appointments have been booked.</p>'}</section>`;
+ return tabs(tab,[['overview','Overview'],['doctors','Doctors'],['patients','Patients'],['appts','Appointments']],'data-tab')+b}
+
+function dash(u){return `<div class="w dash"><h2>Welcome, ${esc(u.name)}</h2><p class="mu" style="margin:0">${{patient:'Patient',doctor:'Doctor',admin:'Admin'}[u.role]} area · signed in as ${esc(u.username)}</p>${{patient:pat,doctor:dr,admin:adm}[u.role](u)}</div>`}
+
+function render(){
+ const u=me(),r=(location.hash.replace('#/','')||'home').split('?')[0];
+ $('#nav').innerHTML=`<a href="#/">Home</a><a href="#/doctors">Doctors</a><a href="#/" data-c="1">Contact</a>`+(u?`<a href="#/${u.role}">My ${u.role} page</a><a href="#" id="out">Log out</a>`:`<a href="#/login">Log in</a><a class="btn sm" href="#/register" style="color:var(--bi)">Register</a>`);
+ $('#foot').innerHTML=`<b>CareSlot Medical Centre</b><br>Book, confirm and manage appointments online.<br><small>Powered by the Medical Appointment System (Java).</small>`;
+ let v;
+ if(r=='dashboard')return go(u?'#/'+u.role:'#/login');
+ if(['patient','doctor','admin'].includes(r)){
+  if(!u){toast('Please log in first');return go('#/login')}
+  if(u.role!=r){toast('That page is not available for your account');return go('#/'+u.role)}
+  v=dash(u)}
+ else if((r=='login'||r=='register')&&u)return go('#/'+u.role);
+ else v={home,doctors,login,register}[r]?.()||home();
+ document.body.classList.toggle('pub',!['patient','doctor','admin'].includes(r));$('#app').innerHTML=v;window.scrollTo(0,0);
+}
+async function show(){try{await refresh()}catch(e){toast(e.message);return}
+ if(!doc(draft.doc))draft.doc=S.doctors[0]?.id;
+ if(S.me?.role=='patient')await loadSlots();
+ render()}
+addEventListener('hashchange',()=>show());
+const run=async(f,msg)=>{try{await f();if(msg)toast(msg)}catch(e){toast(e.message)}await show()};
+document.addEventListener('submit',e=>{e.preventDefault();const f=e.target.id,v=i=>e.target.querySelector('#'+i).value.trim(),pw=()=>e.target.querySelector('#p').value;
+ if(f=='lf')run(async()=>{await api('/api/login',{username:v('e'),password:pw()});go('#/dashboard')});
+ if(f=='rf')run(async()=>{await api('/api/register',{name:v('n'),age:v('ag'),phone:v('ph'),username:v('e'),password:pw()});toast('Account created');go('#/dashboard')});
+ if(f=='af')run(async()=>{cred=await api('/api/admin/doctor',{name:v('an'),spec:v('as'),fee:v('fe')})},'Doctor account created');
+});
+document.addEventListener('change',async e=>{const i=e.target.id;if(i=='dd'||i=='dt'){if(i=='dd')draft.doc=e.target.value;else draft.date=e.target.value||td();draft.time=null;await loadSlots();render()}});
+document.addEventListener('click',e=>{const t=e.target.closest('[data-t],[data-x],[data-s],[data-rd],[data-rp],[data-rs],[data-book],[data-tab],[data-f],#book,#out,[data-c]');if(!t)return;const d=t.dataset,u=me(),adm=u?.role=='admin';
+ if(d.c){e.preventDefault();if(location.hash&&location.hash!='#/')go('#/');setTimeout(()=>$('#contact')?.scrollIntoView(),50)}
+ else if(t.id=='out'){e.preventDefault();cred=null;run(async()=>{await api('/api/logout',{});go('#/')},'Logged out')}
+ else if(d.book){draft.doc=d.book;draft.time=null;if(!u){toast('Log in or register to book');go('#/login')}else if(u.role!='patient')toast('Only patients can book');else go('#/patient')}
+ else if(d.tab&&adm){tab=d.tab;cred=null;render()}
+ else if(d.f&&u?.role=='doctor'){flt=d.f;render()}
+ else if(d.t&&u?.role=='patient'){const r=$('#rs').value;draft.time=d.t;render();$('#rs').value=r}
+ else if(t.id=='book'&&u?.role=='patient'){if(!draft.time)return toast('Choose a time first');
+  run(async()=>{await api('/api/book',{doctor:draft.doc,date:draft.date,time:draft.time,reason:$('#rs').value.trim()});draft.time=null},'Booked – waiting for doctor to confirm')}
+ else if(d.x)run(()=>api('/api/cancel',{id:d.x}),'Appointment cancelled');
+ else if(d.s){let dx='';if(d.s=='completed'){dx=prompt('Diagnosis for the patient record (leave blank to just mark as done):');if(dx===null)return}
+  run(()=>api('/api/status',{id:d.id,status:d.s,diagnosis:dx||''}),'Appointment '+d.s)}
+ else if(d.rd&&adm){if(confirm('Remove this doctor?'))run(()=>api('/api/admin/removeDoctor',{id:d.rd}),'Doctor removed')}
+ else if(d.rp&&adm){if(confirm('Remove this patient?'))run(()=>api('/api/admin/removePatient',{id:d.rp}),'Patient removed')}
+ else if(d.rs&&adm)run(async()=>{cred=await api('/api/admin/reset',{id:d.rs})},'Password reset');
+});
+show();
+
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function countUp(el){const n=+el.dataset.count;if(RM||!n){el.textContent=n;return}const t0=performance.now();(function f(t){const p=Math.min((t-t0)/1200,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(t0)}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);e.target.dataset.count!==undefined?countUp(e.target):e.target.classList.add('in')}),{threshold:.15});
+function enhance(){if(!document.body.classList.contains('pub'))return;
+ document.querySelectorAll('#app .sec .card,#app .sec .step,#app .sec h2,#app .strip .num').forEach((el,i)=>{if(el.classList.contains('rv'))return;el.classList.add('rv');el.style.setProperty('--d',(i%4)*.09+'s');io.observe(el)});
+ document.querySelectorAll('#app [data-count]').forEach(el=>io.observe(el))}
+new MutationObserver(enhance).observe($('#app'),{childList:true});enhance();
+const bar=$('.bar'),pr=$('#prog');addEventListener('scroll',()=>{const h=document.documentElement;bar.classList.toggle('sc',scrollY>8);pr.style.width=(scrollY/((h.scrollHeight-innerHeight)||1)*100)+'%'},{passive:true});
+let rotI=0;setInterval(()=>{const el=$('#rot'),l=[...new Set(S.doctors.map(d=>d.spec))];if(!el||!l.length)return;rotI=(rotI+1)%l.length;el.classList.add('out');setTimeout(()=>{el.textContent=l[rotI];el.classList.remove('out')},300)},2400);
+</script></body></html>
